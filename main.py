@@ -16,7 +16,7 @@ serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, width=32, height=8, block_orientation=-90)
 device.contrast(5)
 virtual = viewport(device, width=32, height=16)
-show_message(device, 'YEAH BITCH!', fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
+show_message(device, 'Hello World !', fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
 
 STATUS = {"RELAY1": False,
           "RELAY2": False,
@@ -55,6 +55,7 @@ def off(pin):
 
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BOARD)
+
 # set up GPIO output channel
 GPIO.setup(PIN["RELAY1"], GPIO.OUT)
 GPIO.setup(PIN["RELAY2"], GPIO.OUT)
@@ -85,42 +86,47 @@ def handle(msg):
 
     print('Got command: %s' % command)
 
-    if command == "Relay1":
-        toggle_pin("RELAY1")
-        print("Relay 1")
-    elif command == "Relay2":
-        toggle_pin("RELAY2")
-        print("Relay 2")
-    elif command == "Relay3":
-        toggle_pin("RELAY3")
-        print("Relay 3")
-    elif command == "Relay4":
-        toggle_pin("RELAY4")
-        print("Relay 4")
-    elif command == "Relay1 off":
+    command = str.lower(command)
+
+    if "relay 1" in command and "off" in command:
         off("RELAY1")
-        print("Relay 1 off")
-    elif command == "Relay2 off":
+        print("Relay 1 Off")
+    elif "relay 2" in command and "off" in command:
         off("RELAY2")
-        print("Relay 2 off")
-    elif command == "Relay3 off":
+        print("Relay 2 Off")
+    elif "relay 3" in command and "off" in command:
         off("RELAY3")
-        print("Relay 3 off")
-    elif command == "Relay4 off":
+        print("Relay 3 Off")
+    elif "relay 4" in command and "off" in command:
         off("RELAY4")
-        print("Relay 4 off")
-    elif command == "Relay1 on":
+        print("Relay 4 Off")
+
+    elif "relay 1" in command and "on" in command:
         on("RELAY1")
-        print("Relay 1 on")
-    elif command == "Relay2 on":
+        print("Relay 2 On")
+    elif "relay 2" in command and "on" in command:
         on("RELAY2")
-        print("Relay 2 on")
-    elif command == "Relay3 on":
+        print("Relay 3 On")
+    elif "relay 3" in command and "on" in command:
         on("RELAY3")
-        print("Relay 3 on")
-    elif command == "Relay4 on":
+        print("Relay 4 On")
+    elif "relay 4" in command and "on" in command:
         on("RELAY4")
-        print("Relay 4 on")
+        print("Relay 4 On")
+
+    elif "relay 1" in command:
+        toggle_pin("RELAY1")
+        print("Relay 1 Toggle")
+    elif "relay 2" in command:
+        toggle_pin("RELAY2")
+        print("Relay 2 Toggle")
+    elif "relay 3" in command:
+        toggle_pin("RELAY3")
+        print("Relay 3 Toggle")
+    elif "relay 4" in command:
+        toggle_pin("RELAY4")
+        print("Relay 4 Toggle")
+
     else:
         text = command
         is_scrolling = False
