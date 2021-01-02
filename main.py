@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import telepot
 from time import sleep, strftime
 from datetime import datetime
 
