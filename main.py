@@ -34,22 +34,22 @@ def toggle_pin(pin):
     global STATUS, PIN
 
     if STATUS[pin]:
-        GPIO.output(PIN[pin], GPIO.LOW)
+        GPIO.output(PIN[pin], GPIO.HIGH)
         STATUS[pin] = False
     else:
-        GPIO.output(PIN[pin], GPIO.HIGH)
+        GPIO.output(PIN[pin], GPIO.LOW)
         STATUS[pin] = True
 
 
 def on(pin):
     global PIN
-    GPIO.output(PIN[pin], GPIO.HIGH)
+    GPIO.output(PIN[pin], GPIO.LOW)
     STATUS[pin] = True
 
 
 def off(pin):
     global PIN
-    GPIO.output(PIN[pin], GPIO.LOW)
+    GPIO.output(PIN[pin], GPIO.HIGH)
     STATUS[pin] = False
 
 
@@ -62,9 +62,9 @@ GPIO.setup(PIN["RELAY3"], GPIO.OUT)
 GPIO.setup(PIN["RELAY4"], GPIO.OUT)
 
 GPIO.output(PIN["RELAY1"], GPIO.HIGH)
-GPIO.output(PIN["RELAY2"], GPIO.LOW)
-GPIO.output(PIN["RELAY3"], GPIO.LOW)
-GPIO.output(PIN["RELAY4"], GPIO.LOW)
+GPIO.output(PIN["RELAY2"], GPIO.HIGH)
+GPIO.output(PIN["RELAY3"], GPIO.HIGH)
+GPIO.output(PIN["RELAY4"], GPIO.HIGH)
 
 text = ""
 is_scrolling = True
