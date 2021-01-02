@@ -41,6 +41,18 @@ def toggle_pin(pin):
         STATUS[pin] = True
 
 
+def on(pin):
+    global PIN
+    GPIO.output(PIN[pin], GPIO.HIGH)
+    STATUS[pin] = True
+
+
+def off(pin):
+    global PIN
+    GPIO.output(PIN[pin], GPIO.LOW)
+    STATUS[pin] = False
+
+
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BOARD)
 # set up GPIO output channel
@@ -52,6 +64,7 @@ GPIO.setup(PIN["RELAY4"], GPIO.OUT)
 text = ""
 is_scrolling = True
 is_first_time = True
+
 
 def scroll():
     global text
@@ -83,6 +96,30 @@ def handle(msg):
         toggle_pin("RELAY4")
         print("Relay 4")
         pass
+    elif command == "Relay1 off":
+        off("RELAY4")
+        print("Relay 4")
+    elif command == "Relay2 off":
+        off("RELAY4")
+        print("Relay 4")
+    elif command == "Relay3 off":
+        off("RELAY4")
+        print("Relay 4")
+    elif command == "Relay4 off":
+        off("RELAY4")
+        print("Relay 4")
+    elif command == "Relay1 on":
+        on("RELAY4")
+        print("Relay 4")
+    elif command == "Relay2 on":
+        on("RELAY4")
+        print("Relay 4")
+    elif command == "Relay3 on":
+        on("RELAY4")
+        print("Relay 4")
+    elif command == "Relay4 on":
+        on("RELAY4")
+        print("Relay 4")
     else:
         text = command
         is_scrolling = False
