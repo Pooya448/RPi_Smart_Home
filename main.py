@@ -128,17 +128,18 @@ def handle(msg):
         print("Relay 4 Toggle")
 
     else:
-        text = command
-        is_scrolling = False
-        if not is_first_time:
-            for thread in threading.enumerate():
-                if thread.name == "text_scroll":
-                    thread.join()
-        t = threading.Thread(target=scroll, name="text_scroll")
-        t.daemon = True
-        is_scrolling = True
-        t.start()
-        is_first_time = False
+        if '/' not in command:
+            text = command
+            is_scrolling = False
+            if not is_first_time:
+                for thread in threading.enumerate():
+                    if thread.name == "text_scroll":
+                        thread.join()
+            t = threading.Thread(target=scroll, name="text_scroll")
+            t.daemon = True
+            is_scrolling = True
+            t.start()
+            is_first_time = False
 
         # text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
 
