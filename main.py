@@ -59,6 +59,7 @@ def scroll():
 
 
 def handle(msg):
+    global text, is_scrolling
     chat_id = msg['chat']['id']
     command = msg['text']
 
