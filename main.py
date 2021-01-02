@@ -23,7 +23,8 @@ def handle(msg):
     command = msg['text']
 
     print('Got command: %s' % command)
-    text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
+    with canvas(virtual) as draw:
+        text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
 
     if command == 'on':
         bot.sendMessage(chat_id, on(11))
