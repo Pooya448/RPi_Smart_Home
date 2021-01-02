@@ -17,6 +17,35 @@ device.contrast(5)
 virtual = viewport(device, width=32, height=16)
 show_message(device, 'Raspberry Pi MAX7219', fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
 
+STATUS = {"RELAY1": False,
+          "RELAY2": False,
+          "RELAY3": False,
+          "RELAY4": False}
+
+PIN = {"RELAY1": 32,
+        "RELAY2": 36,
+        "RELAY3": 38,
+        "RELAY4": 40}
+
+
+# LED
+def toggle_pin(pin):
+    global STATUS, PIN
+
+    if STATUS[pin]:
+        GPIO.output(PIN[pin], GPIO.LOW)
+    else:
+        GPIO.output(PIN[pin], GPIO.HIGH)
+
+
+# to use Raspberry Pi board pin numbers
+GPIO.setmode(GPIO.BOARD)
+# set up GPIO output channel
+GPIO.setup(PIN["RELAY1"], GPIO.OUT)
+GPIO.setup(PIN["RELAY2"], GPIO.OUT)
+GPIO.setup(PIN["RELAY3"], GPIO.OUT)
+GPIO.setup(PIN["RELAY4"], GPIO.OUT)
+
 
 def handle(msg):
     chat_id = msg['chat']['id']
@@ -26,10 +55,12 @@ def handle(msg):
     with canvas(virtual) as draw:
         text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
 
-    if command == 'on':
-        bot.sendMessage(chat_id, on(11))
-    elif command == 'off':
-        bot.sendMessage(chat_id, off(11))
+    # command.lower()
+    #
+    # if command == 'on':
+    #     bot.sendMessage(chat_id, on(11))
+    # elif command == 'off':
+    #     bot.sendMessage(chat_id, off(11))
 
 
 bot = telepot.Bot('1408435159:AAE6P_WYThTl8O2ldqheabyrg_iOUOtkZnk')
@@ -38,7 +69,7 @@ print('I am listening...')
 
 while 1:
     try:
-        time.sleep(10)
+        time.sleep(1)
 
     except KeyboardInterrupt:
         print('\n Program interrupted')
