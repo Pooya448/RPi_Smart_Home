@@ -64,8 +64,6 @@ def handle(msg):
 
     print('Got command: %s' % command)
 
-    is_scrolling = False
-
     if command == "Toggle Relay 1":
         print("Relay 1")
         pass
@@ -80,6 +78,7 @@ def handle(msg):
         pass
     else:
         text = command
+        is_scrolling = False
         t = threading.Thread(target=scroll)
         t.daemon = True
         is_scrolling = True
