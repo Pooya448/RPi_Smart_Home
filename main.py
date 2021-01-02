@@ -53,7 +53,8 @@ def handle(msg):
 
     print('Got command: %s' % command)
     with canvas(virtual) as draw:
-        text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
+        show_message(device, command, fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
+        # text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
 
     # command.lower()
     #
