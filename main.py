@@ -35,8 +35,10 @@ def toggle_pin(pin):
 
     if STATUS[pin]:
         GPIO.output(PIN[pin], GPIO.LOW)
+        STATUS[pin] = False
     else:
         GPIO.output(PIN[pin], GPIO.HIGH)
+        STATUS[pin] = True
 
 
 # to use Raspberry Pi board pin numbers
