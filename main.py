@@ -65,6 +65,7 @@ def handle(msg):
 
 bot = telepot.Bot('1408435159:AAE6P_WYThTl8O2ldqheabyrg_iOUOtkZnk')
 bot.message_loop(handle)
+bot.deleteWebhook()
 print('I am listening...')
 
 while 1:
