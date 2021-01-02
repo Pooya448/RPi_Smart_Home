@@ -13,7 +13,7 @@ from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, LCD_FONT
 
 serial = spi(port=0, device=0, gpio=noop())
-device = max7219(serial, width=32, height=9, block_orientation=-90)
+device = max7219(serial, width=32, height=8, block_orientation=-90)
 device.contrast(5)
 virtual = viewport(device, width=32, height=16)
 show_message(device, 'YEAH BITCH!', fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
