@@ -49,7 +49,7 @@ GPIO.setup(PIN["RELAY4"], GPIO.OUT)
 
 text = ""
 is_scrolling = True
-
+is_first_time = True
 
 def scroll():
     global text
@@ -59,7 +59,7 @@ def scroll():
 
 
 def handle(msg):
-    global text, is_scrolling
+    global text, is_scrolling, is_first_time
     chat_id = msg['chat']['id']
     command = msg['text']
 
@@ -80,10 +80,15 @@ def handle(msg):
     else:
         text = command
         is_scrolling = False
-        t = threading.Thread(target=scroll)
+        if not is_first_time:
+            for thread in threading.enumerate():
+                if thread.name == "text_scroll":
+                    thread.join()
+        t = threading.Thread(target=scroll, name="text_scroll")
         t.daemon = True
         is_scrolling = True
         t.start()
+        is_first_time = False
 
         # text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
 
