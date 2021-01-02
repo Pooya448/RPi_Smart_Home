@@ -65,16 +65,20 @@ def handle(msg):
 
     print('Got command: %s' % command)
 
-    if command == "Toggle Relay 1":
+    if command == "Relay1":
+        toggle_pin("RELAY1")
         print("Relay 1")
         pass
-    elif command == "Toggle Relay 2":
+    elif command == "Relay2":
+        toggle_pin("RELAY2")
         print("Relay 2")
         pass
-    elif command == "Toggle Relay 3":
+    elif command == "Relay3":
+        toggle_pin("RELAY3")
         print("Relay 3")
         pass
-    elif command == "Toggle Relay 4":
+    elif command == "Relay4":
+        toggle_pin("RELAY4")
         print("Relay 4")
         pass
     else:
