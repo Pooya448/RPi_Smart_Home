@@ -83,39 +83,35 @@ def handle(msg):
     if command == "Relay1":
         toggle_pin("RELAY1")
         print("Relay 1")
-        pass
     elif command == "Relay2":
         toggle_pin("RELAY2")
         print("Relay 2")
-        pass
     elif command == "Relay3":
         toggle_pin("RELAY3")
         print("Relay 3")
-        pass
     elif command == "Relay4":
         toggle_pin("RELAY4")
         print("Relay 4")
-        pass
     elif command == "Relay1 off":
-        off("RELAY4")
+        off("RELAY1")
         print("Relay 4")
     elif command == "Relay2 off":
-        off("RELAY4")
+        off("RELAY2")
         print("Relay 4")
     elif command == "Relay3 off":
-        off("RELAY4")
+        off("RELAY3")
         print("Relay 4")
     elif command == "Relay4 off":
         off("RELAY4")
         print("Relay 4")
     elif command == "Relay1 on":
-        on("RELAY4")
+        on("RELAY1")
         print("Relay 4")
     elif command == "Relay2 on":
-        on("RELAY4")
+        on("RELAY2")
         print("Relay 4")
     elif command == "Relay3 on":
-        on("RELAY4")
+        on("RELAY3")
         print("Relay 4")
     elif command == "Relay4 on":
         on("RELAY4")
