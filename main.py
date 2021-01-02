@@ -61,6 +61,11 @@ GPIO.setup(PIN["RELAY2"], GPIO.OUT)
 GPIO.setup(PIN["RELAY3"], GPIO.OUT)
 GPIO.setup(PIN["RELAY4"], GPIO.OUT)
 
+GPIO.output(PIN["RELAY1"], GPIO.LOW)
+GPIO.output(PIN["RELAY2"], GPIO.LOW)
+GPIO.output(PIN["RELAY3"], GPIO.LOW)
+GPIO.output(PIN["RELAY4"], GPIO.LOW)
+
 text = ""
 is_scrolling = True
 is_first_time = True
@@ -94,28 +99,28 @@ def handle(msg):
         print("Relay 4")
     elif command == "Relay1 off":
         off("RELAY1")
-        print("Relay 4")
+        print("Relay 1 off")
     elif command == "Relay2 off":
         off("RELAY2")
-        print("Relay 4")
+        print("Relay 2 off")
     elif command == "Relay3 off":
         off("RELAY3")
-        print("Relay 4")
+        print("Relay 3 off")
     elif command == "Relay4 off":
         off("RELAY4")
-        print("Relay 4")
+        print("Relay 4 off")
     elif command == "Relay1 on":
         on("RELAY1")
-        print("Relay 4")
+        print("Relay 1 on")
     elif command == "Relay2 on":
         on("RELAY2")
-        print("Relay 4")
+        print("Relay 2 on")
     elif command == "Relay3 on":
         on("RELAY3")
-        print("Relay 4")
+        print("Relay 3 on")
     elif command == "Relay4 on":
         on("RELAY4")
-        print("Relay 4")
+        print("Relay 4 on")
     else:
         text = command
         is_scrolling = False
