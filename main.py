@@ -40,12 +40,10 @@ def toggle_pin(pin):
         GPIO.output(PIN[pin], GPIO.LOW)
         STATUS[pin] = True
 
-
 def on(pin):
     global PIN
     GPIO.output(PIN[pin], GPIO.LOW)
     STATUS[pin] = True
-
 
 def off(pin):
     global PIN
@@ -71,13 +69,11 @@ text = ""
 is_scrolling = True
 is_first_time = True
 
-
 def scroll():
     global text
     while is_scrolling:
         with canvas(virtual) as draw:
             show_message(device, text, fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
-
 
 def handle(msg):
     global text, is_scrolling, is_first_time
@@ -141,15 +137,6 @@ def handle(msg):
             t.start()
             is_first_time = False
 
-        # text(draw, (0, 1), command, fill="white", font=proportional(CP437_FONT))
-
-    # command.lower()
-    #
-    # if command == 'on':
-    #     bot.sendMessage(chat_id, on(11))
-    # elif command == 'off':
-    #     bot.sendMessage(chat_id, off(11))
-
 
 bot = telepot.Bot('1408435159:AAE6P_WYThTl8O2ldqheabyrg_iOUOtkZnk')
 bot.message_loop(handle)
@@ -168,6 +155,9 @@ while 1:
     except:
         print('Other error or exception occured!')
         GPIO.cleanup()
+
+
+
 
 # try:
 #     while True:
