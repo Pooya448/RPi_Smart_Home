@@ -23,7 +23,6 @@ show_message(device, 'Hello World !', fill="white", font=proportional(LCD_FONT),
 bot = telebot.TeleBot(TOKEN)
 
 MATRIX_FLAG = False
-LAST_TEXT = ""
 
 STATUS = {"RELAY1": False,
           "RELAY2": False,
@@ -55,7 +54,7 @@ def off(pin):
     GPIO.output(PIN[pin], GPIO.HIGH)
     STATUS[pin] = False
 
-to use Raspberry Pi board pin numbers
+# to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BOARD)
 
 # set up GPIO output channel
@@ -75,10 +74,9 @@ is_first_time = True
 
 def scroll():
     global text
-    print('duh')
     while is_scrolling:
         with canvas(virtual) as draw:
-            # show_message(device, text, fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
+            show_message(device, text, fill="white", font=proportional(LCD_FONT), scroll_delay=0.08)
 
 
 
