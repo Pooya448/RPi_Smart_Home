@@ -272,6 +272,7 @@ def global_maessage(message):
 
 
 bot.polling(none_stop=True)
-
-finally:
-    GPIO.cleanup() # this ensures a clean exit  
+try:
+    pass
+except KeyboardInterrupt:
+    GPIO.cleanup()
