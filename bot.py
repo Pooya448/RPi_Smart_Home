@@ -196,7 +196,11 @@ def status_command(message):
 
 def status_message_const():
     global text
-    message_to_send = 'Relay 1: ' + ps('RELAY1') + '\n' + 'Relay 2: ' + ps('RELAY2') + '\n' + 'Relay 3: ' + ps('RELAY3') + '\n' + 'Relay 4: ' + ps('RELAY4') + '\n' + 'Message on matrix:\n' + text
+    if text == '':
+        dot_m = 'There is no string scrolling on the matrix.'
+    else:
+        dot_m = 'Message on matrix:\n' + text
+    message_to_send = 'Relay 1: ' + ps('RELAY1') + '\n' + 'Relay 2: ' + ps('RELAY2') + '\n' + 'Relay 3: ' + ps('RELAY3') + '\n' + 'Relay 4: ' + ps('RELAY4') + '\n' + dot_m
     return message_to_send
 
 def ps(key):
